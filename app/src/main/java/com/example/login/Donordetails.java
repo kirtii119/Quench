@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class Donordetails extends AppCompatActivity {
     TextView gname,gcontactNumber,gstate,gcity,garea,gpincode,gstreet,gbuildingName,ghouseNumber,gquantity;
-    DatabaseReference reference,reqref,acceptedref;
+    DatabaseReference reference,reqref,acceptedref,receiverref;
     FirebaseDatabase rootNode;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -60,6 +60,7 @@ public class Donordetails extends AppCompatActivity {
 
         reference=FirebaseDatabase.getInstance().getReference("donorForm").child(dphoneNumber);
         reqref=FirebaseDatabase.getInstance().getReference().child("Requests");
+        receiverref=FirebaseDatabase.getInstance().getReference().child("Receivers");
         acceptedref=FirebaseDatabase.getInstance().getReference().child("Accepted Requests");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -98,6 +99,7 @@ public class Donordetails extends AppCompatActivity {
                                     hashMap.put("status","accepted");
                                     hashMap.put("Donor",name);
                                     hashMap.put("Receiver",phoneNumber);
+                                    receiverref.child(phoneNumber).setValue(phoneNumber);
                                     acceptedref.child(dphoneNumber).child(phoneNumber).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task task) {
