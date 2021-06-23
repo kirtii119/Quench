@@ -58,7 +58,7 @@ public class Donordetails extends AppCompatActivity {
 
 
 
-        reference=FirebaseDatabase.getInstance().getReference("donorForm").child(contactNumber);
+        reference=FirebaseDatabase.getInstance().getReference("donorForm").child(dphoneNumber);
         reqref=FirebaseDatabase.getInstance().getReference().child("Requests");
         acceptedref=FirebaseDatabase.getInstance().getReference().child("Accepted Requests");
         reference.addValueEventListener(new ValueEventListener() {
@@ -89,7 +89,7 @@ public class Donordetails extends AppCompatActivity {
                 accept.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        reqref.child(dphoneNumber).child(contactNumber).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        reqref.child(dphoneNumber).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if (task.isSuccessful())
@@ -98,7 +98,7 @@ public class Donordetails extends AppCompatActivity {
                                     hashMap.put("status","accepted");
                                     hashMap.put("Donor",name);
                                     hashMap.put("Receiver",phoneNumber);
-                                    acceptedref.child(dphoneNumber + contactNumber).child(phoneNumber).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                    acceptedref.child(dphoneNumber).child(phoneNumber).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task task) {
                                             Intent intent=new Intent(Donordetails.this,mainfeed.class);

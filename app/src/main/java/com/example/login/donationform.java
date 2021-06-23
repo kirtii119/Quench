@@ -82,7 +82,7 @@ public class donationform extends AppCompatActivity {
 
 
                 donorHelperClass dHelperClass = new donorHelperClass(name,contactNumber,state,city,district,area,pincode,street,buildingName,houseNumber,quantity,phoneNumber);
-                reference.child(contactNumber).setValue(dHelperClass);
+                reference.child(phoneNumber).setValue(dHelperClass);
 
 
                 Intent intent = new Intent(donationform.this, mainfeed.class);
@@ -102,7 +102,7 @@ public class donationform extends AppCompatActivity {
         {
             HashMap<String, Object> hashMap=new HashMap<String, Object>();
             hashMap.put("status","pending");
-            reqRef.child(contactNumber).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+            reqRef.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull @NotNull Task task) {
                     if(task.isSuccessful())
