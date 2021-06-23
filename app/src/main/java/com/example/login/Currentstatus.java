@@ -28,7 +28,7 @@ public class Currentstatus extends AppCompatActivity {
         reqref=FirebaseDatabase.getInstance().getReference("Requests").child(userPhoneNumber);
         acceptedref=FirebaseDatabase.getInstance().getReference("Accepted Requests");
         reference=FirebaseDatabase.getInstance().getReference("donorForm");
-        receiverref=FirebaseDatabase.getInstance().getReference().child("Receivers");
+        receiverref=FirebaseDatabase.getInstance().getReference().child("Receivers").child(userPhoneNumber);
 
         reqref.addValueEventListener(new ValueEventListener() {
             @Override

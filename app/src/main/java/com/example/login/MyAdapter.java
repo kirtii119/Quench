@@ -48,7 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.MyViewHolder>{
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context.getApplicationContext(),Donordetails.class);
+                Intent intent = new Intent(context.getApplicationContext(),receiverform.class);
                 String contactNumber= model.contactNumber;
                 String dphoneNumber= model.phoneNumber;
                 intent.putExtra("keycontactNumber", contactNumber);

@@ -54,7 +54,7 @@ public class receiverform extends AppCompatActivity {
                 String quantity = gquantity.getText().toString();
 
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users/receiverForm");
+                reference = rootNode.getReference("receiverForm");
 
 
                 receiverHelperClass rHelperClass = new receiverHelperClass(name,contactNumber,state,city,district,area,pincode,street,buildingName,houseNumber,quantity);
