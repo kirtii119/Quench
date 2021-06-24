@@ -24,7 +24,7 @@ public class Currentstatus extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
     Button ddetails,rdetails,vdetails;
-    TextView Reqacceptedbyreceiver, Reqacceptedbyvolunteer,congrats;
+    TextView Reqacceptedbyreceiver, Reqacceptedbyvolunteer,congrats,Reqaccepted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class Currentstatus extends AppCompatActivity {
         Reqacceptedbyreceiver=findViewById(R.id.textView20);
         Reqacceptedbyvolunteer=findViewById(R.id.textView22);
         congrats= findViewById(R.id.textView23);
+        Reqaccepted=findViewById(R.id.textView19);
 
         String userPhoneNumber=FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
         reqref=FirebaseDatabase.getInstance().getReference("Requests").child(userPhoneNumber);
@@ -78,7 +79,47 @@ public class Currentstatus extends AppCompatActivity {
 
                         }
                         else{
-                            //
+                            receiverref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                if (snapshot.exists()){
+                                    //he is receiver
+                                    String dphoneNumber=snapshot.getValue().toString();
+                                    rdetails.setVisibility(View.GONE);
+                                    vdetails.setVisibility(View.GONE);
+                                    Reqacceptedbyvolunteer.setVisibility(View.GONE);
+                                    congrats.setVisibility(View.GONE);
+                                    ddetails.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent=new Intent(Currentstatus.this,Currentdonordetails.class);
+                                            intent.putExtra("keydphonenumber",dphoneNumber);
+                                            startActivity(intent);
+                                        }
+                                    });
+
+
+
+                                }
+                                else {ddetails.setVisibility(View.GONE);
+                                    vdetails.setVisibility(View.GONE);
+                                    rdetails.setVisibility(View.GONE);
+                                    Reqacceptedbyreceiver.setVisibility(View.GONE);
+                                    Reqacceptedbyvolunteer.setVisibility(View.GONE);
+                                    congrats.setVisibility(View.GONE);
+                                    Reqaccepted.setText("No ongoing request");
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
                         }
                     }
 
@@ -105,20 +146,7 @@ public class Currentstatus extends AppCompatActivity {
 
 
 
-        receiverref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    //he is receiver
-                    rdetails.setVisibility(View.GONE);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
 
 
 

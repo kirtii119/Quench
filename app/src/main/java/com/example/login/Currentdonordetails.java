@@ -14,15 +14,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Currentreceiverdetails extends AppCompatActivity {
+public class Currentdonordetails extends AppCompatActivity {
     TextView gname,gcontactNumber,gstate,gcity,garea,gpincode,gstreet,gbuildingName,ghouseNumber,gquantity;
     DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currentreceiverdetails);
-        String rphoneNumber=getIntent().getStringExtra("keyrphonenumber");
+        setContentView(R.layout.activity_currentdonordetails);
+        String dphoneNumber=getIntent().getStringExtra("keydphonenumber");
         gname = findViewById(R.id.editTextTextPersonName);
         gcontactNumber = findViewById(R.id.editTextPhone);
         gstate = findViewById(R.id.editTextTextPersonName3);
@@ -36,7 +36,7 @@ public class Currentreceiverdetails extends AppCompatActivity {
 
 
 
-        reference= FirebaseDatabase.getInstance().getReference("receiverForm").child(rphoneNumber);
+        reference= FirebaseDatabase.getInstance().getReference("donorForm").child(dphoneNumber);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {

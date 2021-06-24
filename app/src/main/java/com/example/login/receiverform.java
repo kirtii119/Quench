@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,6 +38,7 @@ public class receiverform extends AppCompatActivity {
         gquantity = findViewById(R.id.editTextNumber2);
         submit = findViewById(R.id.submit);
         String dphoneNumber = getIntent().getStringExtra("keydphoneNumber");
+        String userPhoneNumber= FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
 
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +61,7 @@ public class receiverform extends AppCompatActivity {
 
 
                 receiverHelperClass rHelperClass = new receiverHelperClass(name,contactNumber,state,city,district,area,pincode,street,buildingName,houseNumber,quantity);
-                reference.child(contactNumber).setValue(rHelperClass);
+                reference.child(userPhoneNumber).setValue(rHelperClass);
 
                 Toast.makeText(receiverform.this, "Data Saved",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(receiverform.this,  Donordetails.class);
