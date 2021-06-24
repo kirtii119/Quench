@@ -56,14 +56,15 @@
                 android:text="Quantity:"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/dquantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
 
+                android:paddingLeft="5dp"
                 android:text="10"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,13 +82,15 @@
                 android:text="AREA:"
                 android:textSize="19sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/darea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
 
+                android:paddingLeft="5dp"
                 android:text="Gangadham"
-                android:textSize="19sp"/>
+                android:textSize="19sp" />
 
         </LinearLayout>
 
@@ -106,14 +109,15 @@
                 android:text="CITY:"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/dcity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
 
+                android:paddingLeft="5dp"
                 android:text="Pune"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
 
 
@@ -166,14 +170,15 @@
                 android:text="Quantity:"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/rquantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
 
+                android:paddingLeft="5dp"
                 android:text="10"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -191,13 +196,15 @@
                 android:text="AREA:"
                 android:textSize="19sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/rarea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
 
+                android:paddingLeft="5dp"
                 android:text="Gangadham"
-                android:textSize="19sp"/>
+                android:textSize="19sp" />
 
         </LinearLayout>
 
@@ -216,14 +223,15 @@
                 android:text="CITY:"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/rcity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
 
+                android:paddingLeft="5dp"
                 android:text="Pune"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
 
 
