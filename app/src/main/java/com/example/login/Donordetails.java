@@ -99,8 +99,8 @@ public class Donordetails extends AppCompatActivity {
                                     hashMap.put("status","accepted");
                                     hashMap.put("Donor",name);
                                     hashMap.put("Receiver",phoneNumber);
-                                    receiverref.child(phoneNumber).setValue(phoneNumber);
-                                    acceptedref.child(dphoneNumber).child(phoneNumber).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                    receiverref.child(phoneNumber).setValue(dphoneNumber);
+                                    acceptedref.child(dphoneNumber).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task task) {
                                             Intent intent=new Intent(Donordetails.this,mainfeed.class);

@@ -36,6 +36,7 @@ public class receiverform extends AppCompatActivity {
         ghouseNumber = findViewById(R.id.editTextTextPersonName8);
         gquantity = findViewById(R.id.editTextNumber2);
         submit = findViewById(R.id.submit);
+        String dphoneNumber = getIntent().getStringExtra("keydphoneNumber");
 
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +63,7 @@ public class receiverform extends AppCompatActivity {
 
                 Toast.makeText(receiverform.this, "Data Saved",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(receiverform.this,  Donordetails.class);
+                intent.putExtra("keydphoneNumber",dphoneNumber);
                 String ncontactNumber = getIntent().getStringExtra("keycontactNumber");
                 intent.putExtra("keycontactNumber", ncontactNumber);
                 startActivity(intent);
